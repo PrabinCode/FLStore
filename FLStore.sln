@@ -5,6 +5,10 @@ VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FLStore.Web", "FLStore.Web\FLStore.Web.csproj", "{90F21362-E2FB-45EF-BEE4-7BB99252BF84}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FLStore.Database", "FLStore.Database\FLStore.Database.csproj", "{996CCC34-56D7-4E9D-9799-B2DDC8EB44C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FLStore.Shared", "FLStore.Shared\FLStore.Shared.csproj", "{216C5E8F-5F6B-4C1D-B265-BF44D4852DE2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{90F21362-E2FB-45EF-BEE4-7BB99252BF84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90F21362-E2FB-45EF-BEE4-7BB99252BF84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90F21362-E2FB-45EF-BEE4-7BB99252BF84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{996CCC34-56D7-4E9D-9799-B2DDC8EB44C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{996CCC34-56D7-4E9D-9799-B2DDC8EB44C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{996CCC34-56D7-4E9D-9799-B2DDC8EB44C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{996CCC34-56D7-4E9D-9799-B2DDC8EB44C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{216C5E8F-5F6B-4C1D-B265-BF44D4852DE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{216C5E8F-5F6B-4C1D-B265-BF44D4852DE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{216C5E8F-5F6B-4C1D-B265-BF44D4852DE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{216C5E8F-5F6B-4C1D-B265-BF44D4852DE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
