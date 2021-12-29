@@ -15,7 +15,12 @@ namespace FLStore.Shared
     }
     public class CartStatus : Common
     {
-        public string CartStatusId { get;set; }
+        public string CartStatusId { get; set; }
         public string Status { get; set; }
+    }
+    public class ItemCommon : Common
+    {
+        public ProductCommon Product { get; set; }
+        public int Quantity { get; set; }
     }
 }

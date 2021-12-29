@@ -1,0 +1,277 @@
+﻿@model FLStore.Web.Models.RegistrationModel
+
+@{
+    ViewBag.Title = "Registration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Registration</h2>
+
+
+@using (Html.BeginForm("Registration", "Home", new { }, FormMethod.Post, new { @role = "form", @id = "registrationform", @class = "mt-5 needs-validation", @novalidate = "On", @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    @if (TempData != null && TempData.ContainsKey("message") != false)
+    {
+        <span class="error-signup">@Html.Raw(TempData["message"])</span>
+    }
+    <div class="form-group">
+        @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2", @onkeypress = "return isAlphabateOnly(event)" })
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
+            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.MiddleName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.MiddleName, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
+            @Html.ValidationMessageFor(model => model.MiddleName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2", @onkeypress = "return isAlphabateOnly(event)" })
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
+            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off", @onkeypress = "return isAlphabateNum(event)" } })
+            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.UserPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.UserPassword, new { htmlAttributes = new { @class = "form-control", @maxlength = 30, @autocomplete = "off", @type = "password" } })
+            @Html.ValidationMessageFor(model => model.UserPassword, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", @maxlength = 30, @autocomplete = "off", @type = "password" } })
+            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CustomerAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.CustomerAddress, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
+            @Html.ValidationMessageFor(model => model.CustomerAddress, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CustomerEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.CustomerEmail, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
+            @Html.ValidationMessageFor(model => model.CustomerEmail, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CustomerMobileNo, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.CustomerMobileNo, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off", @onkeypress = "return isNumber(event)" } })
+            @Html.ValidationMessageFor(model => model.CustomerMobileNo, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CustomerType, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-6">
+            @Html.DropDownListFor(model => model.CustomerType, new SelectList(ViewBag.CustomerTypeList, "Value", "Text"), new { htmlAttributes = new { @class = "form-control btn btn-secondary btn-lg dropdown-toggle", @autocomplete = "off" } })
+            @Html.ValidationMessageFor(model => model.CustomerType, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PreferedShipMethod, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-6">
+            @Html.DropDownListFor(model => model.PreferedShipMethod, new SelectList(ViewBag.ShipmentMethodList, "Value", "Text"), new { htmlAttributes = new { @class = "form-control btn btn-secondary btn-lg dropdown-toggle", @autocomplete = "off" } })
+            @Html.ValidationMessageFor(model => model.PreferedShipMethod, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group home">
+        @Html.LabelFor(model => model.CustomerFax, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.CustomerFax, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
+            @Html.ValidationMessageFor(model => model.CustomerFax, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group cooperate">
+        @Html.LabelFor(model => model.CompanyName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
+            @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group cooperate">
+        @Html.LabelFor(model => model.CompanyAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.CompanyAddress, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
+            @Html.ValidationMessageFor(model => model.CompanyAddress, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group cooperate">
+        @Html.LabelFor(model => model.CompanyPhone, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.CompanyPhone, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off", @onkeypress = "return isNumber(event)" } })
+            @Html.ValidationMessageFor(model => model.CompanyPhone, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group cooperate">
+        @Html.LabelFor(model => model.CompanyFax, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.CompanyFax, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
+            @Html.ValidationMessageFor(model => model.CompanyFax, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group student">
+        @Html.LabelFor(model => model.SchoolName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.SchoolName, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
+            @Html.ValidationMessageFor(model => model.SchoolName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ProfileImage, htmlAttributes: new { @class = "control-label col-md-2" })
+
+        <div class="col-md-6">
+            <img id="PPImageView" height="200" width="200" style="border: solid; margin-bottom: 5px;" />
+            <input type="file" title="Profile Picture" id="PPImageFile" class="mt-2" name="PPImageFile" accept="image/x-png,image/jpeg,image/jpg" onchange="showPPImage(this)" />
+
+            @*@Html.EditorFor(model => model.ProfileImage, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })*@
+            @Html.ValidationMessageFor(model => model.ProfileImage, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Register" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+@section Scripts {
+    <script>
+        //alphabet and whitespace
+        function isAlphabateOnly(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || (charCode == 32)) {
+                return true;
+            }
+            return false;
+        }
+        //alphabet number>47<58 -46 /47
+        function isAlphabateNum(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || charCode == 45 || charCode == 47 || (charCode > 47 && charCode < 58)) {
+                return true;
+            }
+            return false;
+        }
+        //alphabet whitespace 32  ,44 -45
+        function isAlphabateComHyp(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+                    /*debugger*/;
+            if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || (charCode == 32) || charCode == 44 || charCode == 45) {
+                return true;
+            }
+            return false;
+        }
+        //Number Only
+        function isNumber(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
+        }
+        //For Profile Pic
+        function showPPImage(input) {
+            if (input.files && input.files[0]) {
+                var filerdr = new FileReader();
+                filerdr.onload = function (e) {
+                    $('#PPImageView').attr('src', e.target.result);
+                }
+                filerdr.readAsDataURL(input.files[0]);
+                $('[data-valmsg-for="ProfileImage"]').html("");
+            }
+        }
+
+        $('#CustomerType').change(function () {
+            if (($(this).val() === 'CORPORATE')) {
+                $('.cooperate').show();
+                $('.student').hide();
+                $('.home').hide();
+
+            } else if ($(this).val() === 'STUDENT') {
+                $('.cooperate').hide();
+                $('.student').show();
+                $('.home').hide();
+
+            }
+            else if ($(this).val() === 'HOME') {
+                $('.cooperate').hide();
+                $('.student').hide();
+                $('.home').show();
+            }
+            else {
+                $('.cooperate').hide();
+                $('.student').hide();
+                $('.home').hide();
+            }
+        });
+        $(document).ready(function () {
+            var customerType = $('#CustomerType').val();
+            if (($(this).val() === 'CORPORATE')) {
+                $('.cooperate').show();
+                $('.student').hide();
+                $('.home').hide();
+
+            } else if ($(this).val() === 'STUDENT') {
+                $('.cooperate').hide();
+                $('.student').show();
+                $('.home').hide();
+
+            }
+            else if ($(this).val() === 'HOME') {
+                $('.cooperate').hide();
+                $('.student').hide();
+                $('.home').show();
+            }
+            else {
+                $('.cooperate').hide();
+                $('.student').hide();
+                $('.home').hide();
+            }
+        });
+
+    </script>
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -11,6 +11,9 @@ namespace FLStore.Shared
     public class CustomerCommon : Common
     {
         public int CustomerId { get; set; }
+        public string FirstName { get; set; }
+        public string MiddleName { get; set; }
+        public string LastName { get; set; }
         public string CustomerStatus { get; set; }
         public string UserName { get; set; }
         public string CustomerAddress { get; set; }
@@ -24,5 +27,6 @@ namespace FLStore.Shared
         public string PreferedShipMethod { get; set; }
         public string SchoolName { get; set; }
         public string ProfileImage { get; set; }
+        public string UserPassword { get; set; }
     }
 }

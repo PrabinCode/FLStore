@@ -45,6 +45,7 @@
     <Compile Include="CartCommon.cs" />
     <Compile Include="Common.cs" />
     <Compile Include="CustomerCommon.cs" />
+    <Compile Include="LoginCommon.cs" />
     <Compile Include="ProductCommon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleCommon.cs" />

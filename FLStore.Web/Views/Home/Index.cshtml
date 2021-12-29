@@ -1,31 +1,142 @@
-﻿@{
+﻿@*@model FLStore.Web.Models.Home.HomeIndexViewModel*@
+@*@using PagedList;
+    @using PagedList.Mvc;*@
+@{
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div id="themeSlider" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#themeSlider" data-slide-to="0" class="active"></li>
+        <li data-target="#themeSlider" data-slide-to="1"></li>
+        <li data-target="#themeSlider" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="item active">
+            <div class="imgOverlay"></div>
+            <img style="height:320px;width:100%" src="../Content/Images/SlideImages/slide1.jpg" alt="First slide">
+            <div class="carousel-caption">
+                <h3>New</h3>
+
+            </div>
+        </div>
+        <div class="item">
+            <div class="imgOverlay"></div>
+            <img style="height:320px;width:100%" src="../Content/Images/SlideImages/slide2.jpg" alt="Second slide">
+            <div class="carousel-caption">
+                <h3>My Phone</h3>
+
+            </div>
+        </div>
+        <div class="item">
+            <div class="imgOverlay"></div>
+            <img style="height:320px;width:100%" src="../Content/Images/SlideImages/slide3.jpg" alt="Third slide">
+            <div class="carousel-caption">
+                <h3>Latest</h3>
+
+            </div>
+        </div>
+        <div class="item">
+            <div class="imgOverlay"></div>
+            <img style="height:320px;width:100%" src="../Content/Images/SlideImages/slide4.jpg" alt="Third slide">
+            <div class="carousel-caption">
+                <h3>Latest</h3>
+
+            </div>
+        </div>
+    </div>
+    <a class="left carousel-control" href="#themeSlider" data-slide="prev">
+        <span class="fa fa-chevron-left"></span>
+    </a>
+    <a class="right carousel-control" href="#themeSlider" data-slide="next">
+        <span class="fa fa-chevron-right"></span>
+    </a>
+
 </div>
+<div class="olContent f1"><h2 style="color:black">Search Product/Category</h2></div>
+<form method="post">
+    <div class="olSearch fr">
+        <input type="text" name="search" placeholder="Enter Keyword" class="inputComn form-control" />
+        <div class="searchIcon">
+            <button type="submit" class="searchBtn">
+                <img src="~/Content/Images/searchIcon.png" />
+            </button>
+        </div>
+    </div>
+</form>
+
 
 <div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    <div class="col-md-12">
+        <div class="page-header">
+            <h2>Our Products <small>trends products</small></h2>
+        </div>
     </div>
 </div>
+
+<div class="row product-container">
+    <div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom:8px">
+        <div class="thumbnail product-item" style="height:300px">
+
+            <img class="img-responsive" title="Click to View Product detail"
+                 style="cursor:pointer;height:160px;width:100%"
+                 src="~/Content/Images/Furniture/furn1.jpg" />
+            <div class="caption">
+                <h5>Product Name</h5>
+                <p>RS. 5000 </p>
+
+                <p>Available</p>
+                <div class="product-item-badge">
+                    
+                        <p>New</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*@foreach (var item in Model.ListOfProducts)
+        {
+            <div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom:8px">
+                <div class="thumbnail product-item" style="height:300px">
+
+                    <img class="img-responsive" title="Click to View Product detail"
+                         style="cursor:pointer;height:160px;width:100%"
+                         src="~/ProductImg/@item.ProductImage" />
+
+                    <div class="caption">
+                        <h5>@item.ProductName</h5>
+                        <p>RS. @item.Price </p>
+                        <p>
+                            @if (item.Quantity > 0)
+                            {
+                                using (Html.BeginForm("AddToCart", "Home", new { productId = item.ProductId, url = "Index" }, FormMethod.Post))
+                                {
+                                    <button type="submit" class="pull-right"><i class="fa fa-shopping-cart"></i></button>
+                                }
+                            <p>Available</p>
+                        }
+                        else
+                        {
+                            <p>Not Available</p>
+                        }
+                            <div class="product-item-badge">
+                                @if (item.IsFeatured == true)
+                                {
+                                    <p>New</p>
+
+                                }
+                                else
+                                {
+                                    <p>Old</p>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }*@
+
+
+</div>
+@*<div class="container">
+        @Html.PagedListPager(Model.ListOfProducts, page => Url.Action("Index", new { page, search = Request.QueryString["search"] }), new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayItemSliceAndTotal = true })
+    </div>*@

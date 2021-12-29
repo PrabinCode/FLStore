@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using FLStore.Web.Common;
+using System.Web;
 using System.Web.Mvc;
 
 namespace FLStore.Web
@@ -8,6 +9,7 @@ namespace FLStore.Web
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            filters.Add(new SessionExpiryFilterAttribute());
         }
     }
 }
