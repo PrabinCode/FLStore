@@ -210,14 +210,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\ScreenShots\AddProduct.png" />
-    <Content Include="App_Data\ScreenShots\AdminPage.png" />
-    <Content Include="App_Data\ScreenShots\CustomerLogin.png" />
-    <Content Include="App_Data\ScreenShots\HomePage.png" />
-    <Content Include="App_Data\ScreenShots\LoginPage.png" />
-    <Content Include="App_Data\ScreenShots\ProductEdit.png" />
-    <Content Include="App_Data\ScreenShots\ProductPage.png" />
-    <Content Include="App_Data\ScreenShots\RegistrationPage.png" />
     <Content Include="Content\AdminStyle\css\sb-admin.css" />
     <Content Include="Content\AdminStyle\css\sb-admin.min.css" />
     <Content Include="Content\AdminStyle\js\demo\chart-area-demo.js" />
@@ -1720,7 +1712,6 @@
     <Content Include="Content\AdminStyle\vendor\fontawesome-free\webfonts\fa-solid-900.woff2" />
     <Content Include="Content\AdminStyle\vendor\jquery\jquery.min.map" />
     <Content Include="Content\AdminStyle\vendor\jquery\jquery.slim.min.map" />
-    <Content Include="App_Data\Database\FurnitureLandStore.bak" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -1777,6 +1768,7 @@
     <Content Include="Views\Admin\ProductAdd.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Content\Images\UserUpload\Profile\" />
     <Folder Include="Views\Cart\" />
   </ItemGroup>
